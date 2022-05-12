@@ -1,11 +1,19 @@
-#' Recorded heart rate during a run 
+#' Recorded heart rate during a run.
 #'
-#' A dataset containing heart-rate recorded during a run. 
-#'
-#' @format A vector of recorded heart rates at points over time with 1160 data points. 
+#' @description A dataset containing heart-rate recorded during a run.
 #' 
+#' @name HeartRate
+#' 
+#' @docType data
+#'
+#' @keywords datasets
+#'
 #' @usage data(HeartRate)
 #'
-#' @author Kaylea Haynes
+#' @rdname HeartRate
+#'
+#' @format A vector of recorded heart rates at points over time with 1160 data points. 
+#'
 #' @references \insertRef{Haynes2017}{changepoint.np}
-"HeartRate"
+#' 
+NULL

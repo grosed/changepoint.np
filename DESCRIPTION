@@ -1,4 +1,4 @@
-Package: changepoint.np.new
+Package: changepoint.np
 Type: Package
 Title: What the Package Does in One 'Title Case' Line
 Version: 1.0
@@ -10,3 +10,5 @@ Description: One paragraph description of what the package does as one
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.8),ggplot2,crops
 LinkingTo: Rcpp, BH
+RoxygenNote: 7.1.2
+RdMacros: Rdpack

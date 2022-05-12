@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // NUNCstepGlobal
 List NUNCstepGlobal(std::vector<double>& data, List pastInfo, const double threshold, const std::vector<double> quantiles);
-RcppExport SEXP _changepoint_np_new_NUNCstepGlobal(SEXP dataSEXP, SEXP pastInfoSEXP, SEXP thresholdSEXP, SEXP quantilesSEXP) {
+RcppExport SEXP _changepoint_np_NUNCstepGlobal(SEXP dataSEXP, SEXP pastInfoSEXP, SEXP thresholdSEXP, SEXP quantilesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -26,7 +26,7 @@ END_RCPP
 }
 // NUNCstepLocal
 long long NUNCstepLocal(std::vector<double>& data, const double threshold, const std::vector<double> quantiles, const std::vector<long>& grid);
-RcppExport SEXP _changepoint_np_new_NUNCstepLocal(SEXP dataSEXP, SEXP thresholdSEXP, SEXP quantilesSEXP, SEXP gridSEXP) {
+RcppExport SEXP _changepoint_np_NUNCstepLocal(SEXP dataSEXP, SEXP thresholdSEXP, SEXP quantilesSEXP, SEXP gridSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -40,7 +40,7 @@ END_RCPP
 }
 // NUNCGlobal
 List NUNCGlobal(Rcpp::Function dataGen, const long w, const double beta, const long K);
-RcppExport SEXP _changepoint_np_new_NUNCGlobal(SEXP dataGenSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP KSEXP) {
+RcppExport SEXP _changepoint_np_NUNCGlobal(SEXP dataGenSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP KSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -54,7 +54,7 @@ END_RCPP
 }
 // NUNCLocal
 List NUNCLocal(Rcpp::Function dataGen, const long w, const double beta, const long K, const std::vector<long>& grid);
-RcppExport SEXP _changepoint_np_new_NUNCLocal(SEXP dataGenSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP KSEXP, SEXP gridSEXP) {
+RcppExport SEXP _changepoint_np_NUNCLocal(SEXP dataGenSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP KSEXP, SEXP gridSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -69,7 +69,7 @@ END_RCPP
 }
 // NUNCSemiParametric
 List NUNCSemiParametric(Rcpp::Function dataGen, const long w, const double beta, std::vector<double> quantiles);
-RcppExport SEXP _changepoint_np_new_NUNCSemiParametric(SEXP dataGenSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP quantilesSEXP) {
+RcppExport SEXP _changepoint_np_NUNCSemiParametric(SEXP dataGenSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP quantilesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -83,7 +83,7 @@ END_RCPP
 }
 // NUNCGlobalOffline
 List NUNCGlobalOffline(std::vector<double>& data, const long w, const double beta, const long K);
-RcppExport SEXP _changepoint_np_new_NUNCGlobalOffline(SEXP dataSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP KSEXP) {
+RcppExport SEXP _changepoint_np_NUNCGlobalOffline(SEXP dataSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP KSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -97,7 +97,7 @@ END_RCPP
 }
 // NUNCLocalOffline
 List NUNCLocalOffline(std::vector<double>& data, const long w, const double beta, const long K, const std::vector<long>& grid);
-RcppExport SEXP _changepoint_np_new_NUNCLocalOffline(SEXP dataSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP KSEXP, SEXP gridSEXP) {
+RcppExport SEXP _changepoint_np_NUNCLocalOffline(SEXP dataSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP KSEXP, SEXP gridSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -112,7 +112,7 @@ END_RCPP
 }
 // NUNCsemiParametricOffline
 List NUNCsemiParametricOffline(std::vector<double>& data, const long w, const double beta, std::vector<double> quantiles);
-RcppExport SEXP _changepoint_np_new_NUNCsemiParametricOffline(SEXP dataSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP quantilesSEXP) {
+RcppExport SEXP _changepoint_np_NUNCsemiParametricOffline(SEXP dataSEXP, SEXP wSEXP, SEXP betaSEXP, SEXP quantilesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -126,7 +126,7 @@ END_RCPP
 }
 // rcpp_pelt
 List rcpp_pelt(std::vector<double>& sumstats, double& beta, int& nquantiles);
-RcppExport SEXP _changepoint_np_new_rcpp_pelt(SEXP sumstatsSEXP, SEXP betaSEXP, SEXP nquantilesSEXP) {
+RcppExport SEXP _changepoint_np_rcpp_pelt(SEXP sumstatsSEXP, SEXP betaSEXP, SEXP nquantilesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -139,19 +139,19 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_changepoint_np_new_NUNCstepGlobal", (DL_FUNC) &_changepoint_np_new_NUNCstepGlobal, 4},
-    {"_changepoint_np_new_NUNCstepLocal", (DL_FUNC) &_changepoint_np_new_NUNCstepLocal, 4},
-    {"_changepoint_np_new_NUNCGlobal", (DL_FUNC) &_changepoint_np_new_NUNCGlobal, 4},
-    {"_changepoint_np_new_NUNCLocal", (DL_FUNC) &_changepoint_np_new_NUNCLocal, 5},
-    {"_changepoint_np_new_NUNCSemiParametric", (DL_FUNC) &_changepoint_np_new_NUNCSemiParametric, 4},
-    {"_changepoint_np_new_NUNCGlobalOffline", (DL_FUNC) &_changepoint_np_new_NUNCGlobalOffline, 4},
-    {"_changepoint_np_new_NUNCLocalOffline", (DL_FUNC) &_changepoint_np_new_NUNCLocalOffline, 5},
-    {"_changepoint_np_new_NUNCsemiParametricOffline", (DL_FUNC) &_changepoint_np_new_NUNCsemiParametricOffline, 4},
-    {"_changepoint_np_new_rcpp_pelt", (DL_FUNC) &_changepoint_np_new_rcpp_pelt, 3},
+    {"_changepoint_np_NUNCstepGlobal", (DL_FUNC) &_changepoint_np_NUNCstepGlobal, 4},
+    {"_changepoint_np_NUNCstepLocal", (DL_FUNC) &_changepoint_np_NUNCstepLocal, 4},
+    {"_changepoint_np_NUNCGlobal", (DL_FUNC) &_changepoint_np_NUNCGlobal, 4},
+    {"_changepoint_np_NUNCLocal", (DL_FUNC) &_changepoint_np_NUNCLocal, 5},
+    {"_changepoint_np_NUNCSemiParametric", (DL_FUNC) &_changepoint_np_NUNCSemiParametric, 4},
+    {"_changepoint_np_NUNCGlobalOffline", (DL_FUNC) &_changepoint_np_NUNCGlobalOffline, 4},
+    {"_changepoint_np_NUNCLocalOffline", (DL_FUNC) &_changepoint_np_NUNCLocalOffline, 5},
+    {"_changepoint_np_NUNCsemiParametricOffline", (DL_FUNC) &_changepoint_np_NUNCsemiParametricOffline, 4},
+    {"_changepoint_np_rcpp_pelt", (DL_FUNC) &_changepoint_np_rcpp_pelt, 3},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_changepoint_np_new(DllInfo *dll) {
+RcppExport void R_init_changepoint_np(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }
