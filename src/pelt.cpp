@@ -10,13 +10,80 @@
 #include <stddef.h>
 #include <string.h>
 //#include "costfunctions.c"
+// #include "costfunctions.h"
+
+namespace pelt
+{
+
 #define SWAP(a,b)   { int t; t=a; a=b; b=t; }  // Macro for swapping
+
+// Cost functions
+double costfunction(double sumstatout[], int tstar, int checklist, int *nquantiles, int *n){
+  double Fkl;
+  double temp_cost;
+  double cost;
+  int nseg, isum;
+
+  cost = 0;
+  temp_cost = 0;
+  nseg = tstar - checklist;
+
+  for(isum = 0; isum < *nquantiles; isum++){
+    Fkl = (sumstatout[isum])/(nseg);
+    temp_cost = (tstar-checklist)*(Fkl*log(Fkl)+(1-Fkl)*log(1-Fkl));
+    if(!isnan(temp_cost)){
+      cost = cost + temp_cost;
+    }
+    //else{
+    //  cost = cost;
+    //}
+  }
+  cost = -2*(log(2**n-1))*cost/(*nquantiles);
+  return(cost);
+}
+
+double mll_nonparametric_ed_mbic(double sumstatout[], int tstar, int checklist, int *nquantiles, int *n){
+  double Fkl;
+  double temp_cost;
+  double cost;
+  int nseg, isum;
+
+  cost = 0;
+  temp_cost = 0;
+  nseg = tstar - checklist;
+
+  for(isum = 0; isum < *nquantiles; isum++){
+    Fkl = (sumstatout[isum])/(nseg);
+    temp_cost = (tstar-checklist)*(Fkl*log(Fkl)+(1-Fkl)*log(1-Fkl));
+    if(!isnan(temp_cost)){
+      cost = cost + temp_cost;
+    }
+    //else{
+    //  cost = cost;
+    //}
+  }
+  cost = -2*(log(2**n-1))*cost/(*nquantiles);
+  return(cost);
+}
+
+
+
+
+void order_vec( int a[], int n ){
+  int i, j;
+  for(i = 0; i < n; i++){         // Make a pass through the array for each element
+    for(j = 1; j < (n-i); j++){  		// Go through the array beginning to end
+      if(a[j-1] > a[j])       // If the the first number is greater, swap it
+        SWAP(a[j-1],a[j]);
+    }
+  }
+}
+
 
 static int *checklist;
 static double *tmplike;
 
-void FreePELT(error)
-  int *error; /* Error code from PELT C function, non-zero => error */
+void FreePELT(int* error)
   {
     if(*error==0){
       free((void *)checklist);
@@ -24,36 +91,41 @@ void FreePELT(error)
     }
   }
 
-  void PELT(cost_func, sumstat,n,pen,cptsout,error,minseglen,nquantiles, lastchangelike, lastchangecpts, numchangecpts)
-  char **cost_func;
-  double *sumstat;    /* Summary statistic for the time series */
-  int *n;			/* Length of the time series */
-  double *pen;  /* Penalty used to decide if a changepoint is significant */
-  int *cptsout;    /* Vector of identified changepoint locations */
-  int *error;   /* 0 by default, nonzero indicates error in code */
-  int *minseglen; //minimum segment length
-  int *nquantiles; //number of quantiles in the empirical distribution approximation (K in EDPELT)
-  double *lastchangelike; // stores likelihood up to that time using optimal changepoint locations up to that time
-  int *lastchangecpts; // stores last changepoint locations
-  int *numchangecpts; //stores the current number of changepoints
+
+void min_which(double *array,int n,double *minout,int *whichout){
+  // Function to find minimum of an array with n elements that is put in min
+  *minout=*array;
+  *whichout=0;
+  int i;
+  for(i=1;i<n;i++){
+    if(*(array+i)< *minout){
+      *minout= *(array+i);
+      *whichout=i;
+    }
+  }
+}
+
+
+  void pelt(char** cost_func, double* sumstat,int* n,double* pen,int* cptsout,int* error,int* minseglen,int* nquantiles, double* lastchangelike, int* lastchangecpts, int* numchangecpts)
   {
 
-    double (*costfunction)();
+    // double (*costfunction)();
     double mll_nonparametric_ed();
     double mll_nonparametric_ed_mbic();
 
-    if (strcmp(*cost_func,"nonparametric.ed")==0){
-      costfunction = &mll_nonparametric_ed;
-    }
-    else if (strcmp(*cost_func,"nonparametric.ed.mbic")==0){
-      costfunction = &mll_nonparametric_ed_mbic;
-    }
+    //if (strcmp(*cost_func,"nonparametric.ed")==0){
+    // costfunction = &mll_nonparametric_ed;
+      //}
+      //else if (strcmp(*cost_func,"nonparametric.ed.mbic")==0){
+      //costfunction = &mll_nonparametric_ed_mbic;
+      //}
 
     int *checklist;
     checklist = (int *)calloc(*n+1,sizeof(int));
     if (checklist==NULL)   {
       *error = 1;
-      goto err1;
+      return;
+      //goto err1;
     }
 
     int nchecklist;
@@ -63,13 +135,15 @@ void FreePELT(error)
     tmplike = (double *)calloc(*n+1,sizeof(double));
     if (tmplike==NULL)   {
       *error = 2;
-      goto err2;
+      // goto err2;
+      free(checklist);
+      return;
     }
 
     int tstar,i,whichout,nchecktmp;
 
 
-    void min_which();
+    // void min_which();
 
     lastchangelike[0]= -*pen;
     lastchangecpts[0]=0;
@@ -132,7 +206,9 @@ void FreePELT(error)
       last=lastchangecpts[last];
       ncpts+=1;
     }
-    err2:  free(checklist);
-    err1:  return;
+    // err2:  free(checklist);
+    // err1:  return;
   }
 
+} //namespace pelt
+  
