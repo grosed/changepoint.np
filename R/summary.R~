@@ -1,0 +1,7 @@
+
+setMethod("summary",signature=list("cpt.class"),function(object)
+{
+    cat("changepoint detection using ",object@type,"\n",sep="")
+    cat("penalty = ",object@penalty,"\n",sep="")
+    cat(changepoints(object))
+})
