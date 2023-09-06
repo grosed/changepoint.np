@@ -94,7 +94,7 @@ typedef model<changed::cost::np::conditional> np_conditional;
 typedef model<changed::cost::np::max> np_max;
 
 
-RCPP_MODULE(changepointnp){
+RCPP_MODULE(changepoint.np){
     using namespace Rcpp;
     class_<normal_mean>("normal_mean")
       .constructor()
