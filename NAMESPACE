@@ -1,4 +1,4 @@
-useDynLib(changed, .registration=TRUE)
+useDynLib(changepoint.np, .registration=TRUE)
 import(methods, Rcpp,ggplot2)
 # exportPattern("^[[:alpha:]]+")
 exportMethods(changepoints)
