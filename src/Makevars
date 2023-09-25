@@ -1,2 +1,2 @@
 CXX_STD = CXX17 
-PKG_CXXFLAGS = -I./../inst/changed/methods -I./../inst/changed/cost/normal -I./../inst/changed/cost/np 
+PKG_CXXFLAGS = -I./../inst/changed/methods -I./../inst/changed/cost/normal -I./../inst/changed/cost/np -D_GLIBCXX_DEBUG
