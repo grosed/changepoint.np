@@ -2,7 +2,7 @@
 
 load("test.data.RData")
 
-library(changed)
+library(changepoint.np)
 source("hyeyoung-maeng-original.R")
 
 test_that("test quantiles against original R code",
