@@ -28,7 +28,7 @@ namespace changed
 	    F[0] = -beta;
 	    std::vector<int>  cpts(n);
 	    std::vector<double> C(n);
-	    std::vector<int> R(n);
+	    std::vector<int> R(n+1);
 	    R[0] = 0;
 	    int ncands = 1;
 	    for(int tstar = 1; tstar <= n; tstar++)
