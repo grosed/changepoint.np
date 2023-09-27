@@ -1,7 +1,6 @@
 quantiles <- function(X,k)
 {
   # derived from code provided by Hyeyoung Maeng
-  k <- k - 2
   n <- length(X)
   Q <- matrix(0, k, n+1)
   sorted.X = sort(X)

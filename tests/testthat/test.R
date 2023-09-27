@@ -22,7 +22,7 @@ test_that("test quantiles against original R code",
         for(k in 2:30)
         {
           expected <- c(-Inf,qnt.seq(X,k),Inf)
-	  actual <- quantiles(X,k,"notequal")
+	  actual <- quantiles(X,k)
 	  expect_equal(expected,actual)	
         }
 
@@ -42,7 +42,7 @@ test_that("test np.average against original R code",
 	X = rnorm(n) + mu
 
 	## generate quantiles
-	qnts <- quantiles(X,24,method="nonequal")
+	qnts <- quantiles(X,24)
 
         ## check package against test data
 	key.root <- "average-alpha="
@@ -76,7 +76,7 @@ test_that("test np.max against original R code",
 	X = rnorm(n) + mu
 
 	## generate quantiles
-	qnts <- quantiles(X,24,method="nonequal")
+	qnts <- quantiles(X,24)
 
         ## check package against test data
 	key.root <- "max-alpha="
@@ -116,7 +116,7 @@ test_that("test np.conditional against original R code",
 	X = rnorm(n) + mu
 
 	## generate quantiles
-	qnts <- quantiles(X,24,method="nonequal")
+	qnts <- quantiles(X,24)
 
         ## check package against test data
 	key.root <- "conditional-alpha="
