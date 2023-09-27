@@ -47,7 +47,7 @@ namespace changed
 		  {
 		    if(F[R[i]] + cf(R[i]+1,tstar) <= F[tstar] + beta)
 		      {
-			R[ncands] = R[i];
+			R[ncands++] = R[i];
 		      }
 		  }
 		R[ncands++] = tstar;
